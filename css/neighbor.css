@@ -92,14 +92,16 @@
 
 /* --- Neighbors List Grid --- */
 .neighbors-grid {
-  display: grid;
-  /* スマホ向け: 横4列 */
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 🌟 これが全体を中央揃えにする魔法です */
   gap: 10px;
   margin-bottom: 60px;
 }
 
 .neighbor-card {
+  /* スマホ向け: 横4列 (隙間10px × 3つ分を引いて4で割る) */
+  width: calc((100% - 30px) / 4);
   background: var(--card-bg);
   border: 1px solid #e2e8f0;
   border-radius: 10px;
@@ -107,6 +109,10 @@
   text-align: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.02);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* flexアイテム内の要素（画像・文字）も中央に寄せる */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .neighbor-card:hover {
   transform: translateY(-3px);
@@ -140,10 +146,11 @@
 /* PC・タブレット向け: 横6列 */
 @media (min-width: 768px) {
   .neighbors-grid {
-    grid-template-columns: repeat(6, 1fr);
     gap: 20px;
   }
   .neighbor-card {
+    /* 横6列 (隙間20px × 5つ分を引いて6で割る) */
+    width: calc((100% - 100px) / 6);
     padding: 20px 10px;
   }
   .neighbor-photo {
