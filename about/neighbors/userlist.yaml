@@ -1,0 +1,11 @@
+- name: Neighbor
+  affiliation: SnowVillage
+  photo: ../../images/neighbors/user_name.png
+
+# - name: データ ハナコ
+#   affiliation: Data Engineering Inc.
+#   photo: ../../images/neighbors/hanako.png
+
+# - name: スノー ジョン
+#   affiliation: フリーランス
+#   photo: ../../images/neighbors/john.png

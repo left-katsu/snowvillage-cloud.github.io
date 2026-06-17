@@ -117,10 +117,14 @@
         <a href="../" class="btn-text" style="color: var(--secondary); text-decoration: none; font-weight: 600">← 運営トップへ戻る</a>
       </div>
     </main>
-
+    
+    
     <div id="footer-container"></div>
 
     <script src="../../script.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    
     <script>
       renderHeader("../..", "neighbors");
       renderFooter();
@@ -130,13 +134,17 @@
         if (!grid) return;
 
         try {
-          const response = await fetch("userlist.json");
-          if (!response.ok) throw new Error("JSONの取得に失敗しました");
+          // 🌟 変更: yamlファイルを読み込む
+          const response = await fetch("userlist.yaml");
+          if (!response.ok) throw new Error("YAMLの取得に失敗しました");
           
-          const users = await response.json();
+          // 🌟 変更: テキストとして取得し、js-yamlでパース(変換)する
+          const text = await response.text();
+          const users = jsyaml.load(text);
 
-          if (users.length === 0) {
-            grid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-light);">現在メンバーを募集中です！</p>`;
+          // もしデータが空、または正しく読み込めなかった場合
+          if (!users || users.length === 0) {
+            grid.innerHTML = `<p style="grid-column: 1 / -1; width: 100%; text-align: center; color: var(--text-light);">現在メンバーを募集中です！</p>`;
             return;
           }
 
@@ -154,7 +162,7 @@
 
         } catch (error) {
           console.error(error);
-          grid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: #e53e3e;">メンバーリストの読み込みエラーが発生しました。</p>`;
+          grid.innerHTML = `<p style="grid-column: 1 / -1; width: 100%; text-align: center; color: #e53e3e;">メンバーリストの読み込みエラーが発生しました。</p>`;
         }
       });
     </script>
