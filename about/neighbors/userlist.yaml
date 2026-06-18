@@ -1,6 +1,9 @@
 - name: Neighbor
   affiliation: SnowVillage
   photo: ../../images/neighbors/user_name.png
+  xUrl: "https://x.com/XXXX"
+  linkedInUrl: "https://www.linkedin.com/in/XXXXX"
+
 
 # - name: データ ハナコ
 #   affiliation: Data Engineering Inc.

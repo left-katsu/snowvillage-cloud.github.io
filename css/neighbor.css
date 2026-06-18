@@ -124,7 +124,7 @@
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 8px;
+  margin-bottom: 6px; 
   border: 2px solid #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -163,5 +163,40 @@
   }
   .neighbor-affiliation {
     font-size: 0.7rem;
+  }
+}
+
+.neighbor-sns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px; /* アイコンと名前の間の余白 */
+}
+.sns-icon {
+  color: var(--text-light); /* 初期状態は薄いグレー */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.sns-icon:hover {
+  transform: translateY(-2px); /* ホバー時に少し浮く */
+}
+.x-icon:hover {
+  color: #0f1419; /* Xのブランドカラーに変化 */
+}
+.linkedin-icon:hover {
+  color: #0a66c2; /* LinkedInのブランドカラーに変化 */
+}
+
+@media (min-width: 768px) {
+  .neighbor-photo {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 8px; /* PC版も少し余白を調整 */
+  }
+  .neighbor-sns {
+    gap: 12px;
+    margin-bottom: 10px;
   }
 }
